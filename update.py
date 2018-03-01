@@ -1,6 +1,6 @@
 import os
 
-sudo_install = 'sudo apt-get install '
+sudo_install = 'sudo apt-get '
 sudo = 'sudo apt '
 
 print(sudo_install+'update -y')
