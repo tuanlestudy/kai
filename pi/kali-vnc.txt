@@ -1,0 +1,4 @@
+apt-get install tightvncserver
+cp vncboot /etc/init.d/vncboot
+chmod 755 /etc/init.d/vncboot
+update-rc.d vncboot defaults
