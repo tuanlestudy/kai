@@ -1,0 +1,3 @@
+Fix loi khong go dc @#
+
+  sudo setxkbmap us

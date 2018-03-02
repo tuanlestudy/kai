@@ -1,0 +1,19 @@
+/var/www/html/index.html
+static wlan0 IP: 192.168.0.113
+static wtho0 IP: 169.254.0.113
+98.207.62.26
+
+ssh pi@169.254.231.180
+
+netstat -nr	//Kernel IP routing table
+
+sudo nano /etc/dhcpcd.conf
+
+interface wlan0
+static ip_address=192.168.0.113
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1
+
+ssh pi@your_global_ip_address
+
+sudo raspi-config

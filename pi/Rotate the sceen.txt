@@ -1,0 +1,8 @@
+Put "lcd_rotate=2" in /boot/config.txt and the screen will turn upside-down.
+
+In Terminal, type "sudo nano /boot/config.txt"
+Add the line "lcd_rotate=2" to the top of the file.
+Press CTRL+X
+Then Y
+Then Enter.
+And reboot!

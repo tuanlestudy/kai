@@ -1,0 +1,21 @@
+sudo rpi-update
+sudo reboot
+sudo REPO_URI=https://github.com/notro/rpi-firmware rpi-update
+sudo reboot
+sudo git clone https://github.com/swkim01/waveshare-dtoverlays.git
+sudo cp waveshare-dtoverlays/waveshare35a-overlay.dtb /boot/overlays/
+sudo nano /boot/config.txt
+*find* #uncomment this this to enable the lirc-rpi module and add*
+dtparam=spi=on
+dtoverlay=waveshare35a
+sudo reboot
+sudo wget -c https://raw.githubusercontent.com/RobertCNelson/tools/master/pkgs/dtc.sh
+sudo chmod +x dtc.sh
+sudo ./dtc.sh
+sudo reboot
+sudo nano /usr/share/X11/xorg.conf.d/99-fbturbo.conf
+
+in this file, find the line that says: Option “fbdev” “/dev/fb0? and change the fb0 to fb1
+
+ctrl+x then y then enter
+sudo reboot
