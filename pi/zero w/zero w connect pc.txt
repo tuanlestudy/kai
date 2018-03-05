@@ -1,0 +1,25 @@
+Here's the code you will need for your Raspberry Pi Zero to be able to be used via USB (headless) which means you don't need a micro HDMI cable to conenct.
+
+***config.txt***
+dtoverlay=dwc2
+
+***cmdline.txt*** #between rootwait and quiet
+modules-load=dwc2,g_ether
+
+***Create a file***
+'ssh'
+
+
+pi@raspberrypi.local
+
+As an added bonus, I also show you how to setup and activate WiFi on the Raspberry Pi Zero W from the command line inside SSH over USB.
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+network={
+  ssid="NETWORK"
+  psk="PASSWORD"
+}
+
+sudo wpa_cli reconfigure
+ifconfig wlan0

@@ -1,0 +1,2 @@
+Exploit failed: Errno::ENOENT No such file or directory @ rb_sysopen - /root/.wine/drive_c/eternal11.dll
+--> 	mkdir -p /root/.wine/drive_c/
