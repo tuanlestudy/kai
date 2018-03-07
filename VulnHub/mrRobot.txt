@@ -1,0 +1,13 @@
+	#discover the machine in network
+netdiscover -i eth0 -r 192.168.182.0/24
+	#found the ports
+nmap -sV 192.168.0.27
+
+22/tcp  closed ssh
+80/tcp  open   http     Apache httpd
+443/tcp open   ssl/http Apache httpd
+
+	#scanning on the victim using nikto to find any vulnerabilities on the system.
+nikto -h 192.168.0.27
+
+	#
