@@ -1,0 +1,18 @@
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+apt-get install metasploit-framework
+
+wget https://kali.sh/xfce4.sh
+
+cat xfce4.sh
+
+sudo sh xfce4.sh
+
+sudo /etc/init.d/xrdp start
+
+run cmd:	mstsc
+
+127.0.0.1:3390
+
+sudo /etc/init.d/xrdp stop
+
