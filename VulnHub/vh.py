@@ -11,19 +11,25 @@ def readURL(link):
 	return html
 
 def getLink(html):
-	f = open(html, 'r')
-	for line in f:
-		print line
-		for i in range (0, len(line)-1):
-			if(html[i]=='"'):
-				j = i+1
-				while True:
-					if (html[j] == '"'): 
-						print (html[i:j])
-						break
-					if (j==len(line)-5):
-						break
-					j+=1
+	print html
+	line = readURL(html)
+	i = 0
+	while True:
+		#print len(line)
+		#print html[40:50]
+		try:
+			if (html[i]=='W'): 
+				print -1
+				break
+		except IndexError:
+			break
+		if(html[i:i+11]=="Walkthrough"):
+			print 0
+			break
+		if (i == (len(line)-1)): 
+			break
+		print i
+		i+=1
 
-str = 'html.txt'
+str = 'https://www.vulnhub.com/entry/mr-robot-1,151/'
 getLink(str)
