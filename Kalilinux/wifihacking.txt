@@ -1,0 +1,10 @@
+Tool:	Airgeddon
+	git clone http://github.com/v1s1t0r1sh3r3/airgeddon.git
+	sudo bash ./airgeddon.sh
+	2
+	7
+	9
+	2
+	n
+	n
+	y - capture handshake
