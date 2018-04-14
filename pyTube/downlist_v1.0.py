@@ -13,6 +13,6 @@ pl = Playlist(link_list)
 # or if you want to download in a specific directory
 #pl.download_all(file_path())
 location = raw_input("Where save file: ")
-location = '/Volumes/Lexar64G/'
+#location = '/Volumes/Lexar64G/'
 pl.download_all(location)
 print ('')

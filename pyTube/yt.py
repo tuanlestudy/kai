@@ -45,16 +45,16 @@ def playlistDownload(llink, output):
 	print('Accessing Youtube URL...')
 	try:
 		pl = Playlist(llink)
-		print('Downloading...')
-		if(output is None):
-			pl.download_all()
-		else:
-			print('Your file will save to:', output)
-			pl.download_all(output)
-		delete_last_line()
-		print('Completed')
 	except:
 		print("ERROR. Check your:\n  -connection\n  -url is a YouTube url\n\nTry again.")
+	print('Downloading...')
+	if(output is None):
+		pl.download_all()
+	else:
+		print('Your file will save to:', output)
+		pl.download_all(output)
+	delete_last_line()
+	print('Completed')
 
 def fileSingleDownload(ysfile, output):
 	f = open(ysfile, 'r')
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 	if options.ylink:
 		singleDownload(options.ylink, options.output)
 	if options.llink:
-		playlistDownload(options.ylink, options.output)
+		playlistDownload(options.llink, options.output)
 	if options.ysfile:
 		fileSingleDownload(options.ysfile, options.output)
 	if options.lsfile:
