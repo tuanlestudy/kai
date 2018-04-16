@@ -1,7 +1,0 @@
-hackfest2016: Orcus
-https://www.vulnhub.com/entry/hackfest2016-orcus,182/
-https://download.vulnhub.com/hackfest2016/Orcus.ova.torrent
-
-hackfest2016: Quaoar
-https://www.vulnhub.com/entry/hackfest2016-quaoar,180/
-https://download.vulnhub.com/hackfest2016/Quaoar.ova
