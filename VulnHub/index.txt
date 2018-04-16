@@ -1,0 +1,652 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Damn Vulnerable Linux (DVL): 1.4 (Strychnine &amp; E605) ~ VulnHub</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/touch-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png" />
+<link rel="stylesheet" type="text/css" href="//necolas.github.io/normalize.css/1.1.3/normalize.css" />
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/static/fonts/fonts.css" />
+<link rel="stylesheet" type="text/css" href="/static/famfamfam/fam-icons.css" />
+<link rel="stylesheet" type="text/css" href="//simonwhitaker.github.io/github-fork-ribbon-css/gh-fork-ribbon.css" />
+<!--[if lt IE 9]><link rel="stylesheet" href="//simonwhitaker.github.io/github-fork-ribbon-css/gh-fork-ribbon.ie.css"><![endif]-->
+<link rel="stylesheet" href="https://raw.githubusercontent.com/blueimp/cdn/d2d55575c0a63125d65e10550275a9e172e5ce72/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/bootstrap/css/bootstrap-image-gallery.min.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="Entries - Atom" href="https:///feeds/added/atom/" />
+<link rel="alternate" type="application/rss+xml" title="Entries - RSS" href="https:///feeds/added/rss/" />
+<link rel="alternate" type="application/atom+xml" title="Blog" href="https://blog.vulnhub.com/atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="Torrents - Atom" href="https:///feeds/torrent/atom/" />
+<link rel="alternate" type="application/rss+xml" title="Torrents - RSS" href="https:///feeds/torrent/rss/" />
+<link rel="author" type="text/plain" href="https:///humans.txt" />
+<link rel="author" type="text/plain" href="https:///robots.txt" />
+<link rel="sitemap" type="application/xml" href="https:///sitemap.xml" />
+<link rel="canonical" href="https://www.vulnhub.com/entry/damn-vulnerable-linux-dvl-14-strychnine-e605,2/" />
+<meta name="description" xml:lang="en" lang="en" content="Damn Vulnerable Linux (DVL): 1.4 (Strychnine &amp; E605), made by DVL. Download & walkthrough links are available." />
+<meta name="keywords" content="vulnhub,vulnerable,design,digital,information,security,infosec,hacking,pentest,training,download,mirror,walkthrough,hint,spoiler,legal,free,materials,resources,learning,hands on,practical,crack,break,boot2root,vulnerable virtual machines,machine,vuln,exploit,community" />
+</head>
+<body>
+<noscript>
+    <div class="text-center">
+      <h4>Javascript is required to give the best user experience.</h4>
+    </div>
+  </noscript>
+<div class="head">
+<div class="row-fluid upper">
+<div class="navig">
+<div class="span12">
+<ul class="parent">
+<li><a class=" parent" href="/"><i class="icon-white icon-home" style="position:relative;top:4px;"></i> HOME</a></li>
+<li><a href="#" class="show-hide parent"><i class="icon-white icon-search" style="position:relative;top:4px;"></i> SEARCH</a></li>
+<li class="dropdown">
+<a class=" parent dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" href="#"><i class="icon-white icon-question-sign" style="position:relative;top:4px;"></i> HELP<b class="caret"></b></a>
+<ul class="dd-menu" style="top: 58px; left: 190px;">
+<li><a href="/faq/"><i class="icon-white icon-info-sign"></i> FAQ</a></li>
+ <li><a href="/lab/"><i class="icon-white icon-ok"></i> Setting Up A Lab</a></li>
+<li><a href="/chat/"><i class="icon-white icon-comment"></i> Chat</a></li>
+</ul>
+</li>
+<li>
+<a class=" parent" href="/resources/"><i class="icon-white icon-file" style="position:relative;top:4px;"></i> RESOURCES</a>
+</li>
+<li>
+<a class="parent" href="https://blog.vulnhub.com/"><i class="icon-white icon-edit" style="position:relative;top:4px;"></i> BLOG</a>
+</li>
+<li class="dropdown">
+<a class=" parent dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" href="#"><i class="icon-white icon-user" style="position:relative;top:4px;"></i> ABOUT<b class="caret"></b></a>
+<ul class="dd-menu" style="top: 58px; left: 580px;">
+<li><a href="/about/"><i class="icon-white icon-certificate"></i> About VulnHub</a></li>
+<li><a href="/contact/"><i class="icon-white icon-envelope"></i> Contact</a></li>
+<li><a href="/feeds/"><i class="icon-white icon-bookmark"></i> Feeds</a></li>
+<li><a href="/privacy/"><i class="icon-white icon-briefcase"></i> Privacy Policy</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row-fluid">
+<div class="span12 entry">
+<div class="row-fluid">
+<div class="span12" id="top">
+<a href="javascript:history.go(-1)">Back</a>
+<span class="text-right">
+<a class="accordion-toggle scroll" data-toggle="collapse" data-parent="#accordionrelease" href="#release"><i class="icon-map-marker"></i>About Release</a>
+| <a class="accordion-toggle scroll" data-toggle="collapse" data-parent="#accordiondownload" href="#download"><i class="icon-download"></i>Download</a>
+| <a class="accordion-toggle scroll" data-toggle="collapse" data-parent="#accordiondescription" href="#description"><i class="icon-info-sign"></i>Description</a>
+| <a class="accordion-toggle scroll" data-toggle="collapse" data-parent="#accordionfileinfo" href="#fileinfo"><i class="icon-file"></i>File information</a>
+| <a class="accordion-toggle scroll" data-toggle="collapse" data-parent="#accordionvm" href="#vm"><i class="icon-hdd"></i>Virtual Machine</a>
+| <a class="accordion-toggle scroll" data-toggle="collapse" data-parent="#accordionnetworking" href="#networking"><i class="icon-globe"></i>Networking</a>
+| <a class="accordion-toggle scroll" data-toggle="collapse" data-parent="#accordionscreenshot" href="#screenshot"><i class="icon-eye-open"></i>Screenshot(s)</a>
+</span>
+</div>
+
+</div>
+<div class="hDiv"></div>
+<br />
+<div class="row-fluid">
+<h1 class="header-inline"><a href="/entry/damn-vulnerable-linux-dvl-14-strychnine-e605,2/">Damn Vulnerable Linux (DVL): 1.4 (Strychnine &amp; E605)</a></h1>
+<div class="text-right">
+
+<a class="twitter" href="https://twitter.com/home/?status=I%27m%20looking%20at%20Damn Vulnerable Linux (DVL)%3A%201.4 (Strychnine &amp; E605)%20(http%3A%2F%2Fvulnhub.com%2Fentry%2Fdamn-vulnerable-linux-dvl-14-strychnine-e605,2/%3Fsource%3Dtwitter)%20%23VulnHub" data-hashtags="VulnHub" target="blank" rel="nofollow">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fvulnhub.com%2Fentry%2Fdamn-vulnerable-linux-dvl-14-strychnine-e605,2/%3Fsource%3Dfacebook&amp;t=%5BVulnHub%5D%20Damn Vulnerable Linux (DVL)%3A%201.4 (Strychnine &amp; E605)" target="blank" rel="nofollow">Facebook</a>
+
+<a class="mail" href="/cdn-cgi/l/email-protection#78472b0d1a121d1b0c455d4d3a2e0d1416300d1a5d4d3c5d4a483c191516582e0d14161d0a191a141d583411160d0058503c2e34515d4b395d4a4849564c58502b0c0a011b101611161d585e19150843583d4e484d515e191508431a171c0145100c0c085d4b395d4a3e5d4a3e0e0d1416100d1a561b17155d4a3e1d160c0a015d4a3e1c191516550e0d14161d0a191a141d551411160d00551c0e1455494c550b0c0a011b101611161d551d4e484d544a575d4b3e0b170d0a1b1d5d4b3c1d15191114" target="blank" rel="nofollow">Email</a>
+</div>
+<div class="hDiv"></div>
+<br />
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordionrelease">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordionrelease" href="#release" class="inline-block"><i class="icon-map-marker"></i>About Release<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="release" class="accordion-body collapse in">
+<div class="accordion-inner">
+<ul>
+<li><b>Name</b>: Damn Vulnerable Linux (DVL): 1.4 (Strychnine &amp; E605)</li>
+<li><b>Date release</b>: 13 Feb 2008</li>
+</ul>
+<br />
+<ul>
+<li><b>Author</b>: <a href="/author/dvl,1/">DVL</a></li>
+<li><b>Series</b>: <a href="/series/damn-vulnerable-linux-dvl,1/">Damn Vulnerable Linux (DVL)</a></li>
+<li><b>Web page</b>: <a href="http://web.archive.org/web/20090312135824/http://www.damnvulnerablelinux.org/index.php/eng/Damn%20Vulnerable%20Linux%20Distro/Damn%20Vulnerable%20Linux/Release%20Notes%20for%20Damn%20Vulnerable%20Linux%20(up%20to%20release%201.4">http://web.archive.org/web/20090312135824/http://www.damnvulnerablelinux.org/index.php/eng/Damn%20Vulnerable%20Linux%20Distro/Damn%20Vulnerable%20Linux/Release%20Notes%20for%20Damn%20Vulnerable%20Linux%20(up%20to%20release%201.4</a></li>
+</ul>
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modalrelease">?</a><br />
+</div>
+<br />
+<div id="modalrelease" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="modalreleaseLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+&times;
+</button>
+<h3 id="modalreleaseLabel">About Release</h3>
+</div>
+<div class="modal-body">
+This mentions the name of this release, when it was released, who made it, a link to 'series' and a link to the homepage of the release.<br />
+It's common for an author to release multiple 'scenarios', making up a 'series' of machines to attack.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordiondownload">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordiondownload" href="#download" class="inline-block"><i class="icon-download"></i>Download<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="download" class="accordion-body collapse">
+<div class="accordion-inner">
+<h4 class="inline-block">DVL_Strychnine_E605_1_4.iso</h4> <small class="showhide">(Size: 1.6 GB)</small>
+<ul>
+<li><b>Download (Mirror)</b>: <a href="https://download.vulnhub.com/dvl/archive/DVL_Strychnine_E605_1_4.iso">https://download.vulnhub.com/dvl/archive/DVL_Strychnine_E605_1_4.iso</a></li>
+
+</ul>
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modaldownload">?</a><br />
+</div>
+<br />
+<div id="modaldownload" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="DownloadLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+&times;
+</button>
+<h3 id="DownloadLabel">Download</h3>
+</div>
+<div class="modal-body">
+Here you can download the mentioned files using various methods.<br />
+<br />
+We have listed the <b>original source</b>, from the author's page. However, after time these links 'break', for example: either the files are moved, they have reached their maximum bandwidth limit, or, their hosting/domain has expired.<br />
+<br />
+For these reasons, we have been in touch with each author asking for permission to mirror the files. If the author has agreed, we have created <b>mirrors</b>. These are untouched copies of the listed files. <i>(You can check for yourself via the MD5 &amp; SHA1 checksums which are individually displayed on their entry page. See how <a href="/faq/#checksum">here</a>)</i>.<br />
+<br />
+We also offer the download via <b>BitTorrent</b>. We prefer that people use BitTorrent, however, we do understand that it is not as straight forward as clicking on a direct link.<br />
+<br />
+To make sure everyone using VulnHub has the best experience possible using the site, we have had to <div class="underline">limit the amount of simultaneous direct download files to two files, with a max speed of 3mb</div>.<br />
+This is because the average file size is currently about 700mb, which causes our bandwidth to be high <i>(couple of terabytes each month!)</i>. As this is a privately funded project, we believe we have chosen the best hosting provider for the limited budget.<br />
+<br />
+If would you like to be able to download a mass, and at quicker speed, please use torrents as these will be seeded 24/7. For a guide on how to setup and use torrents, see <a href="http://www.digitaltrends.com/computing/how-to-use-bittorrent/">here</a>.<br />
+<br />
+<br />
+If you're the owner of a listed file or believe that we are unlawfully distributing files without permission, please get in touch <a href="/contact/">here</a>.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordiondescription">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordiondescription" href="#description" class="inline-block"><i class="icon-info-sign"></i>Description<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="description" class="accordion-body collapse in">
+<div class="accordion-inner">
+<h4>Damn Vulnerable Linux (DVL) Strychnine+E605 (1.4):</h4>
+<p>Added more tools. Now Reverse Code Engineering tools is 99%, added Truecrypt, Eclipse IDE for Java and C++, added Mono for .NET vulnerability. Rearranged the menu, minor bug fixes ( :grin: ). We close tool addition with this and focus on bug fix and training material only from now on.</p>
+<ul>
+<li>[Application Development] Add Motor IDE</li>
+<li>[Application Development] Update HLA to 1.98 and StdLib to 2.3</li>
+<li>[Application Development] Add LogWatch</li>
+<li>[DVL Core] Add XEN</li>
+<li>[Reverse Code Engineering] Add Insight GDB Debugger</li>
+<li>[Tutorials] Add CPU Sim - An Interactive Java-based CPU Simulator</li>
+<li>[Reverse Code Engineering] Add JAD Java Decompiler</li>
+<li>[Tools] Add VLC Media Player</li>
+<li>[Documentation] Add TeTex</li>
+<li>[Documentation] Add JabRef</li>
+<li>[Application Development] Add Kile</li>
+<li>[Documentation] Add kDissert Mindmapper</li>
+<li>[Peneration Testing] Add JBroFuzz</li>
+<li>[Application Development] Add WebScarab</li>
+<li>[Peneration Testing] Add CAL9000</li>
+<li>[Reverse Code Engineering] Add KDBG</li>
+<li>[Application Development] Add xchm</li>
+<li>[DVL Core] Add gtk libs</li>
+<li>[Tools] Add xvidcap</li>
+<li>[Tools] Add AcroRead</li>
+<li>[Tools] Add Scite </li>
+</ul>
+<p>DVL 1.4 final is ready to go and is uploaded at the moment. We hit the 1.6 GB size, including all necessary to train software development, IT security and Reverse Code Engineering. During the next time the mirrors will be informed. After this we post the links. As well we do a short intro video to show all features and on how to use DVL.</p>
+<p>Source: <a href="http://blog.security4all.be/2008/02/damn-vulnerable-linux-14-released.html">http://blog.security4all.be/2008/02/damn-vulnerable-linux-14-released.html</a></p>
+<p>Source: [http://web.archive.org/web/20090312135824/http://www.damnvulnerablelinux.org/index.php/eng/Damn%20Vulnerable%20Linux%20Distro/Damn%20Vulnerable%20Linux/Release%20Notes%20for%20Damn%20Vulnerable%20Linux%20(up%20to%20release%201.4](http://web.archive.org/web/20090312135824/http://www.damnvulnerablelinux.org/index.php/eng/Damn%20Vulnerable%20Linux%20Distro/Damn%20Vulnerable%20Linux/Release%20Notes%20for%20Damn%20Vulnerable%20Linux%20(up%20to%20release%201.4)</p>
+<br />
+<br />
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modaldescription">?</a><br />
+</div>
+<br />
+<div id="modaldescription" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="DescriptionLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+&times;
+</button>
+<h3 id="DescriptionLabel">Description</h3>
+</div>
+<div class="modal-body">
+This section is for various information that has been collected about the release, such as quotes from the webpage and/or the readme file.<br />
+These sources of information are usually helpful towards the completion of the release as the author can drop hints* as well as methods to help get the release up and working.<br />
+<br />
+<br />
+<b>* This is a 'little' hint</b>. Useful to help you get started and it shouldn't give anything away that you quickly could find out for yourself.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordionfileinfo">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordionfileinfo" href="#fileinfo" class="inline-block"><i class="icon-file"></i>File Information<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="fileinfo" class="accordion-body collapse">
+<div class="accordion-inner">
+<ul>
+<li><b>Filename</b>: DVL_Strychnine_E605_1_4.iso</li>
+<li><b>File size</b>: 1.6 GB</li>
+<li><b>MD5</b>: 18D35C6BB41DAE198DFEF933A57137B8</li>
+<li><b>SHA1</b>: 13387C837D46E74C8CD00461BFBFFBEE4E87B8BA</li>
+</ul>
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modalchecksum">?</a><br />
+</div>
+<br />
+<div id="modalchecksum" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="ChecksumLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+&times;
+</button>
+<h3 id="ChecksumLabel">Checksum</h3>
+</div>
+<div class="modal-body">
+To make sure that the files haven't been altered in any manner, you can check the checksum of the file.<br />
+This makes sure that the you have acquired the same file which was transferred to you, without being modified/changed/damaged.<br />
+<br />
+Some authors publish the checksums in the README files, on their homepages or sometimes inside compressed archive <i>(if it has been compressed).</i><br />
+VulnHub also lists the MD5 &amp; SHA1 checksums for every file which it offers to download, allowing you to check. You can find all the checksums <a href="http://download.vulnhub.com/checksum.txt">here</a>, otherwise, they will be individually displayed on their entry page. To check the checksum, you can do it <a href="/faq/#checksum">here</a>.<br />
+<br />
+You can find out how to check the file's checksum <a href="/faq/#checksum">here</a>.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordionvm">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordionvm" href="#vm" class="inline-block"><i class="icon-hdd"></i>Virtual Machine<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="vm" class="accordion-body collapse">
+<div class="accordion-inner">
+ <ul>
+<li><b>Format</b>: Disk Image (.ISO)</li>
+<li><b>Operating System</b>: Linux</li>
+</ul>
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modalvm">?</a><br />
+</div>
+<br />
+<div id="modalvm" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="vmLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+&times;
+</button>
+<h3 id="vmLabel">Virtual Machine</h3>
+</div>
+<div class="modal-body">
+This covers information regarding the virtual machine itself, such as the format of the virtual machine and the operating system*.<br />
+<br />
+<br />
+<b>* This is a 'little' hint</b>. Useful to help you get started and it shouldn't give anything away that you quickly could find out for yourself.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordionnetworking">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordionnetworking" href="#networking" class="inline-block"><i class="icon-globe"></i>Networking<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="networking" class="accordion-body collapse">
+<div class="accordion-inner">
+<ul>
+<li><b>DHCP service</b>: Enabled</li>
+<li><b>IP address</b>: Automatically assign</li>
+</ul>
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modalnetwork">?</a><br />
+</div>
+<br />
+<div id="modalnetwork" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="networkLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+&times;
+</button>
+<h3 id="networkLabel">Networking</h3>
+</div>
+<div class="modal-body">
+This contains information related to the networking state of the machine*.<br />
+<br />
+When starting out to attack the machine, the user might help by making sure the machine is up &amp; running correctly as some machines are easier to discover on the network than others.<br />
+<br />
+<br />
+<b>* This is a 'little' hint</b>. Useful to help you get started and it shouldn't give anything away that you quickly could find out for yourself.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordionscreenshot">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordionscreenshot" href="#screenshot" class="inline-block"><i class="icon-eye-open"></i>Screenshot(s)<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+
+<div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
+<div class="modal-header">
+<a class="close" data-dismiss="modal">&times;</a>
+<h3 class="modal-title"></h3>
+</div>
+<div class="modal-body"><div class="modal-image"></div></div>
+
+</div>
+<div id="screenshot" class="accordion-body collapse">
+<div class="accordion-inner">
+<div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+<a href="/media/img/entry/DVL_Strychnine_E605_1_4-1.png" target="_blank" data-gallery="gallery"><img class="img-rounded" src="/media/img/entry/DVL_Strychnine_E605_1_4-1-thumb.png" alt="Damn Vulnerable Linux (DVL) 1.4 (Strychnine &amp; E605) screenshot" title="Screenshot of Damn Vulnerable Linux (DVL) 1.4 (Strychnine &amp; E605)" /> </a>
+<a href="/media/img/entry/DVL_Strychnine_E605_1_4-2.png" target="_blank" data-gallery="gallery"><img class="img-rounded" src="/media/img/entry/DVL_Strychnine_E605_1_4-2-thumb.png" alt="Damn Vulnerable Linux (DVL) 1.4 (Strychnine &amp; E605) screenshot" title="Screenshot of Damn Vulnerable Linux (DVL) 1.4 (Strychnine &amp; E605)" /> </a>
+<a href="/media/img/entry/DVL_Strychnine_E605_1_4-3.png" target="_blank" data-gallery="gallery"><img class="img-rounded" src="/media/img/entry/DVL_Strychnine_E605_1_4-3-thumb.png" alt="Damn Vulnerable Linux (DVL) 1.4 (Strychnine &amp; E605) screenshot" title="Screenshot of Damn Vulnerable Linux (DVL) 1.4 (Strychnine &amp; E605)" /> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordionservice">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordionservice" href="#service" class="inline-block"><i class="icon-cog"></i>Services <small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="service" class="accordion-body collapse">
+<div class="accordion-inner">
+<ul>
+<li>Custom</li>
+</ul>
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modalsservices">?</a><br />
+</div>
+<br />
+<div id="modalsservices" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="ServicesLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+ &times;
+</button>
+<h3 id="ServicesLabel">Services</h3>
+</div>
+<div class="modal-body">
+The list here, is of the running services on the machine to attack*.<br />
+<br />
+This was added to allow the attacker to select a specific service to attack. For example: A database which uses PostgreSQL, not MySQL.<br />
+<br />
+<br />
+<b>* This is a hint</b>. Useful to help you get started.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="accordion" id="accordiontags">
+<div class="accordion-group">
+<div class="accordion-heading">
+<div class="accordion-toggle">
+<a data-toggle="collapse" data-parent="#accordiontags" href="#tags" class="inline-block"><i class="icon-tags"></i>Entry Tags<small class="showhide">Show/Hide</small></a>
+<small class="backtotop"><a href="#top" class="scroll">Back To The Top</a></small>
+</div>
+</div>
+<div id="tags" class="accordion-body collapse">
+<div class="accordion-inner">
+<ul>
+<li>Local Challenge</li>
+</ul>
+<div class="help">
+<a class="close" aria-hidden="true" data-toggle="modal" href="#modalsstags">?</a><br />
+</div>
+<br />
+<div id="modalsstags" class="modal hide fade modalWide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+&times;
+</button>
+<h3 id="myModalLabel">Tags</h3>
+</div>
+<div class="modal-body">
+The list here, is of the key phrases linked back to the machine *.<br />
+<br />
+This was added to allow the attacker filter the machines to attack. For example: A machine that has a web application &amp; requires privilege escapion.<br />
+<br />
+<br />
+<b>* This is a spoiler</b>. Some information published here could give away a little too much, but helpful sorting/filtering the machines in which to attack.<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="search"> 
+<a href="#" class="show-hide"></a>
+<div class="search-box">
+<div class="row-fluid">
+<div class="span12">
+<form name="search-select" class="form-horizontal" id="search-select" action="/" method="GET">
+<fieldset>
+<legend>
+Search
+</legend>
+<div class="row-fluid">
+<div class="span12">
+<input type="text" name="q" class="input-medium" placeholder="Search..." />
+<input class="btn btn-medium btn-primary" type="submit" value="Go" />
+</div>
+</div>
+</fieldset>
+<br />
+<div class="row-fluid">
+<div class="span12">
+<fieldset>
+<legend>
+Sort
+</legend>
+<select name="sort" id="sort">
+<optgroup label="Name">
+<option value="name-asc">Name [A-Z]</option>
+<option value="name-des">Name [Z-A]</option>
+</optgroup>
+<optgroup label="Date">
+<option value="date-asc">Oldest Date Created</option>
+<option value="date-des" selected="selected">Newest Date Created</option>
+</optgroup>
+</select>
+</fieldset>
+</div>
+</div>
+<br />
+<div class="row-fluid">
+<div class="span12">
+<fieldset>
+<legend>
+Type
+</legend>
+<label>
+<input type="radio" name="type" value="vm" checked="checked">
+Vulnerable Machine
+</label>
+</fieldset>
+</div>
+</div>
+<div style="text-align:center;"><input class="btn btn-medium btn-primary" type="submit" value="Apply" /></div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<div class="row-fluid">
+<div class="span12">
+<div class="span12">
+<div class="text-center">
+<p>&COPY; VulnHub 2012-2018</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/d07b1474/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-hover-dropdown.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery.color-2.1.2.js"></script>
+<script type="text/javascript" src="/static/js/scroll.js"></script>
+<script src="https://blueimp.github.com/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap-single/bootstrap-image-gallery.min.js"></script>
+
+<script type="text/javascript" src="/static/js/cookieAlert.js"></script>
+<div class="cookieWarningBox"></div>
+
+<script>
+    window.onload = function(){
+      $('.show-hide').click(function(){
+        if($('.search').hasClass('out')){
+          $('.search').removeClass('out');
+          $('.search').animate({
+            marginLeft: "-260px"
+          }, 300);
+        }else{
+          $('.search').addClass('out');
+          $('.search').animate({
+            marginLeft: "0px"
+          }, 300);
+        }
+        return false;
+      });
+
+      $('.link.selectall').click(function(){
+        $(this).parent().parent().parent().children('label').children('input').prop('checked', true);
+        return false;
+      });
+      $('.link.selectnone').click(function(){
+        $(this).parent().parent().parent().children('label').children('input').removeAttr('checked');
+        return false;
+      });
+      $('.link.selecttog').click(function(){
+        $(this).parent().parent().parent().children('label').children('input').click();
+        return false;
+      });
+    }
+  </script>
+<script>
+    $(document).ready(function(){
+      $("ul.dd-menu li a").hover(function(event) {
+        $(this).stop(true).animate({
+          color: "#ffffff"
+        }, 200, function() {
+          // Animation complete.
+        });
+      }, function(event) {
+        $(this).stop(true).css("color", "#686868");
+      });
+      $("ul.dd-menu li a").click(function(){
+        var dropdownButton = $(this).parent().parent().parent().find("a");
+        dropdownButton.toggleClass("open");
+      });
+    })
+  </script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37274599-1', 'vulnhub.com');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
