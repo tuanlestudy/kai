@@ -1,0 +1,17 @@
+192.168.159.140
+nmap -p 1-65535 -T4 -A -v 192.168.159.140
+Then http://172.16.34.163/control/index.html and then page source
+    <!-- FL46_1:urh8fu3i039rfoy254sx2xtrs5wc6767w -->  ---> Flag #1
+In http://172.16.34.163/control/js/ a text file README.MadBro
+	FL101110_10:111101011101
+    1r101010q10svdfsxk1001i1
+    11ry100f10srtr1100010h10
+It's a binary
+     FL46_2:39331r42q2svdfsxk9i13ry4f2srtr98h2 --> Flag 2
+using metasplit
+$ use auxiliary/scanner/smtp/smtp_enum
+$ set rhosts 192.168.159.140
+$ run
+	convert "46 4c 34 36 5f 33 3a 32 396472796 63637756 8656874 327231646434 717070756 5793437 347 3767879610a" from hex
+	FL46_3:29dryf67uheht2r1dd4qppuey474svxya --> Flag 3
+dirb http://192.168.159.140/control/ -X .txt,.php,.html

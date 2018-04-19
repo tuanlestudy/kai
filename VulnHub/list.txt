@@ -1,2 +1,9 @@
-/entry/mr-robot-1,151/
-/entry/64base-101,173/
+151 mr-robot-1
+173 64base-101
+174 pentester-lab-padding-oracle
+175 usv-2016-v101
+176 wallabys-nightmare-v102
+178 pluck-1
+180 hackfest2016-quaoar
+181 hackfest2016-sedna
+210 zico2-1
