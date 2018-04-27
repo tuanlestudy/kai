@@ -1,0 +1,16 @@
+cd /etc/lightdm
+nano lightdm.conf
+
+#autologin-user=
+#autologin-user-timeout=0
+
+autologin-user=root
+autologin-user-timeout=0
+
+cd /etc/pam.d
+
+nano lightdm-autologin
+
+auth required pam_succeed_if.so user != root quiet_success
+
+#auth required pam_succeed_if.so user != root quiet_success
