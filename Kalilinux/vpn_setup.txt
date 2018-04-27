@@ -1,0 +1,21 @@
+apt-get install network-manager-openvpn
+apt-get install network-manager-openvpn-gnome
+apt-get install network-manager-pptp
+apt-get install network-manager-pptp-gnome
+apt-get install network-manager-strongswan
+apt-get install network-manager-vpnc
+apt-get install network-manager-vpnc-gnome
+
+https://freevpn.me/accounts/
+
+OpenVPN
+
+    Updated February 2018, Download New Certificate Bundle
+
+    Username: freevpnme
+    Password: 9pN6yu56Gbg1
+    TCP 80, 443
+    UDP 53, 40000
+    Unlimited Bandwidth
+    Torrents Allowed
+    No Logging
