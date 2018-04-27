@@ -15,3 +15,8 @@ $ run
 	convert "46 4c 34 36 5f 33 3a 32 396472796 63637756 8656874 327231646434 717070756 5793437 347 3767879610a" from hex
 	FL46_3:29dryf67uheht2r1dd4qppuey474svxya --> Flag 3
 dirb http://192.168.159.140/control/ -X .txt,.php,.html
+
+
+
+
+http://adaywithtape.blogspot.com/2017/04/vulnhub-d0not5top-writeup.html
