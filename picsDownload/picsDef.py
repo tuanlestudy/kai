@@ -35,8 +35,7 @@ def read_url(url_link):
                 j = j -1
                 if(html[j] == '"'):
                     beg = j + 1
-                    break    
-            #print beg, end, end - beg
+                    break
             url_imageS = html[beg:end]
             for c in range(0, end-beg):
                 if (url_imageS[c:c+4] == 'http'):
@@ -49,11 +48,11 @@ def read_url(url_link):
                     listS.append(url_image)
                 check = False
     for d in range(0, len(listS)):
-        print listS[d]
+        print (listS[d])
         try:
             get_image(listS[d])
         except:
-            print 'error'
+            print ('error')
 
 def get_image(url_image):  
     req = urllib.urlopen(url_image)
