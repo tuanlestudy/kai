@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6fdd8462-c728-49f2-982e-43561c3bf3a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/picsDownload/picsFromFile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/picsDownload/pics.py" beforeDir="false" afterPath="$PROJECT_DIR$/picsDownload/pics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/picsDownload/picsDef.py" beforeDir="false" afterPath="$PROJECT_DIR$/picsDownload/picsDef.py" afterDir="false" />
+    <list default="true" id="6fdd8462-c728-49f2-982e-43561c3bf3a9" name="Default Changelist" comment="123">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/picsDownload/picsFromFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/picsDownload/picsFromFile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/picsDownload/temp" beforeDir="false" afterPath="$PROJECT_DIR$/picsDownload/temp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,66 +16,50 @@
     <session id="1323838887">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="8" />
+          <entry key="py" value="9" />
           <entry key="temp" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="8" />
+          <entry key="Python" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1357" />
+          <entry key="py" value="1434" />
+          <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1357" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="1434" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/picsDownload/picsDef.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/picsDownload/picsFromFile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="34" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="34" />
+            <state relative-caret-position="116">
+              <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1539725346188" expanded="true" signature="1000:1085" ph="..." />
+                <marker date="1539726060567" expanded="true" signature="65:66" ph="..." />
+                <marker date="1539726060567" expanded="true" signature="1059:1178" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/picsDownload/temp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="646" column="7" selection-start-line="646" selection-start-column="7" selection-end-line="646" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -195,26 +178,34 @@
       <option name="presentableId" value="Default" />
       <updated>1539717035257</updated>
     </task>
+    <task id="LOCAL-00001" summary="123">
+      <created>1539725369670</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1539725369670</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="0" width="1937" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.33636364" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3247191" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997367" visible="true" weight="0.3247191" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4986835" weight="0.33595505" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002633" side_tool="true" visible="true" weight="0.3247191" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -222,6 +213,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="123" />
+    <option name="LAST_COMMIT_MESSAGE" value="123" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/Program Files (x86)/Python37-32/Lib/encodings/cp1252.py">
@@ -249,19 +244,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/picsDownload/picsFromFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="34" />
+        <state relative-caret-position="116">
+          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1539725346188" expanded="true" signature="1000:1085" ph="..." />
+            <marker date="1539726060567" expanded="true" signature="65:66" ph="..." />
+            <marker date="1539726060567" expanded="true" signature="1059:1178" ph="..." />
           </folding>
         </state>
       </provider>

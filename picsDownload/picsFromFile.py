@@ -3,11 +3,8 @@ import urllib.request
 import webbrowser
 import os.path
 
-def downloadPics():
-    fr = open('tempLink.txt', 'a')
-
+def downloadPics(pages, url):
     os.system('mkdir pics/' + pages)
-
     with urllib.request.urlopen(url) as response:
         html = response.read()
     fw = open("temp", 'wb')
@@ -39,11 +36,17 @@ def write2file(link):
     fw.write(link)
     fw.close()
 
+def add2file(link):
+    fw = open('link.txt', 'ab')
+    fw.write(link.encode("utf-8"))
+    fw.write('\n'.encode("utf-8"))
+    fw.close()
+
 def checkPages():
     pages = input('Start Number: ')
     a=0
     b=1
-    for k in range(int(pages), int(pages) + 10):
+    for k in range(int(pages), int(pages) + 100):
         url = 'https://hdasianpics.com/album/' + str(k) + '/'
         with urllib.request.urlopen(url) as response:
             html = response.read()
@@ -60,6 +63,7 @@ def checkPages():
                     break
             if(len(x[a:b]) > 10):
                 print(url + "   "+ x[a:b])
+                add2file(url + "   "+ x[a:b])
                 a=0
                 b=1
                 break
