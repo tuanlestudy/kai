@@ -167,7 +167,7 @@ def downloadTotal():
                             break
                 if (check == True):
                     url_imageS = ht[beg:end]
-                    fw.write(url_imageS+'\n')
+                    fw.write(count + ' ' + url_imageS+'\n')
                     # print(url_imageS)
                     print('wget ' + url_imageS + ' -O ./pics/' + pages + '/' + str(count) + '.jpg')
                     os.system('wget ' + url_imageS + ' -O ./pics/' + pages + '/' + str(count) +  '.jpg')
