@@ -129,14 +129,16 @@ def copy2file(file, fileTemp):
         for i in range(0, len(x)):
             if (x[i] == " "):
                 url = x[0:i]
-                print(url)
+                #print(url)
                 fa.write(url + '\n')
                 break
     fa.close()
     fr.close()
+    print('Completed copy to temp file')
 
 def downloadTotal():
-    #copy2file('linkTotal.txt', 'linkTotalTemp.txt')
+    #copy2file('./files/linkTotal.txt', './files/linkTotalTemp.txt')
+    #check = input("Continous? ")
     fr = open('./files/linkTotalTemp.txt', 'r')
     for x in fr:
         getHtml(x)
@@ -167,7 +169,7 @@ def downloadTotal():
                             break
                 if (check == True):
                     url_imageS = ht[beg:end]
-                    fw.write(count + ' ' + url_imageS+'\n')
+                    fw.write(str(count) + ' ' + url_imageS+'\n')
                     # print(url_imageS)
                     print('wget ' + url_imageS + ' -O ./pics/' + pages + '/' + str(count) + '.jpg')
                     os.system('wget ' + url_imageS + ' -O ./pics/' + pages + '/' + str(count) +  '.jpg')
