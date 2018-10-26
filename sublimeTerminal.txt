@@ -1,0 +1,3 @@
+ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
+http://www.marinamele.com/2014/05/customize-colors-of-your-terminal-in-mac-os-x.html
