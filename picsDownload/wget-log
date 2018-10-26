@@ -1,0 +1,12 @@
+--2018-10-17 13:08:46--  https://storage.googleapis.com/piaoliangmeizi-1/b4d0d425255b4a928420a0346e986f5d.jpg
+Resolving storage.googleapis.com (storage.googleapis.com)... 2607:f8b0:4005:802::2010, 172.217.0.48
+Connecting to storage.googleapis.com (storage.googleapis.com)|2607:f8b0:4005:802::2010|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 67972 (66K) [image/jpeg]
+Saving to: ‘./pics/2184/132.jpg’
+
+     0K .......... .......... .......... .......... .......... 75% 1.41M 0s
+    50K .......... ......                                     100% 3.81M=0.04s
+
+2018-10-17 13:09:20 (1.67 MB/s) - ‘./pics/2184/132.jpg’ saved [67972/67972]
+
